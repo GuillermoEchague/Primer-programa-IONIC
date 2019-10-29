@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-loading',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingPage implements OnInit {
 
-  constructor() { }
+  loading: any;
+  constructor( private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
-  }
+  this.presentLoading( 'Espere');
 
+  setTimeout(() => {
+  this.loading.dismiss();
+  }, 1500);
+ }
+
+ async presentLoading( message: string) {
+  this.loading = await this.loadingCtrl.create({
+    message
+    // duration: 2000
+  });
+  return this.loading.present();
+ }
 }
