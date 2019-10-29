@@ -6,6 +6,7 @@ import { FiltroPipe } from './filtro.pipe';
 
 @NgModule({
   declarations: [FiltroPipe],
+  exports: [FiltroPipe],
   imports: [
     CommonModule
   ]
